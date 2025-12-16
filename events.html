@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Learning Events - Upcoming Workshops & Webinars</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: white;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #667eea;
+            overflow: hidden;
+        }
+
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+        }
+
+        .event-card.workshop {
+            border-left-color: #f093fb;
+        }
+
+        .event-card.webinar {
+            border-left-color: #4facfe;
+        }
+
+        .event-card.meetup {
+            border-left-color: #43e97b;
+        }
+
+        .event-card.conference {
+            border-left-color: #fa709a;
+        }
+
+        .event-type {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .event-card.workshop .event-type {
+            background-color: #f093fb20;
+            color: #f093fb;
+        }
+
+        .event-card.webinar .event-type {
+            background-color: #4facfe20;
+            color: #4facfe;
+        }
+
+        .event-card.meetup .event-type {
+            background-color: #43e97b20;
+            color: #43e97b;
+        }
+
+        .event-card.conference .event-type {
+            background-color: #fa709a20;
+            color: #fa709a;
+        }
+
+        .event-title {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .event-date {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .event-time {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .event-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        .event-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        .event-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .topic-tag {
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+
+        .event-speaker {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+
+        .event-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            width: 100%;
+            text-align: center;
+        }
+
+        .event-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
+        }
+
+        .capacity {
+            color: #999;
+            font-size: 0.85em;
+            margin-top: 10px;
+        }
+
+        .capacity.full {
+            color: #f093fb;
+            font-weight: 500;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .no-events {
+            text-align: center;
+            color: white;
+            padding: 40px;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 AI Learning Events</h1>
+            <p>Discover workshops, webinars, and meetups to advance your AI skills</p>
+        </header>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterEvents('all')">All Events</button>
+            <button class="filter-btn" onclick="filterEvents('workshop')">Workshops</button>
+            <button class="filter-btn" onclick="filterEvents('webinar')">Webinars</button>
+            <button class="filter-btn" onclick="filterEvents('meetup')">Meetups</button>
+            <button class="filter-btn" onclick="filterEvents('conference')">Conferences</button>
+        </div>
+
+        <div class="events-grid" id="eventsContainer">
+            <!-- Events will be populated here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        const events = [
+            {
+                id: 1,
+                type: 'workshop',
+                title: 'Deep Learning Fundamentals Bootcamp',
+                date: 'January 15-17, 2026',
+                time: '9:00 AM - 5:00 PM',
+                location: 'Virtual & In-Person (New York)',
+                description: 'A comprehensive 3-day bootcamp covering neural networks, CNNs, and RNNs with hands-on projects.',
+                topics: ['Deep Learning', 'Neural Networks', 'Python', 'TensorFlow'],
+                speaker: 'Dr. Sarah Chen, AI Research Lead at TechCorp',
+                link: '#register',
+                capacity: '50/50 (Full)',
+                isFull: true
+            },
+            {
+                id: 2,
+                type: 'webinar',
+                title: 'Large Language Models: From Theory to Application',
+                date: 'December 20, 2025',
+                time: '2:00 PM - 3:30 PM UTC',
+                location: 'Online',
+                description: 'Explore how LLMs work, fine-tuning techniques, and practical applications in production environments.',
+                topics: ['LLMs', 'Fine-tuning', 'Prompt Engineering'],
+                speaker: 'Prof. James Mitchell, Stanford AI Institute',
+                link: '#register',
+                capacity: '500+ spots available',
+                isFull: false
+            },
+            {
+                id: 3,
+                type: 'meetup',
+                title: 'Bay Area AI & Machine Learning Meetup',
+                date: 'December 18, 2025',
+                time: '6:00 PM - 8:00 PM',
+                location: 'San Francisco, CA',
+                description: 'Monthly meetup for AI enthusiasts and professionals to share projects, discuss trends, and network.',
+                topics: ['Networking', 'Project Showcase', 'AI Trends'],
+                speaker: 'Community Organized',
+                link: '#register',
+                capacity: '100+ spots available',
+                isFull: false
+            },
+            {
+                id: 4,
+                type: 'workshop',
+                title: 'Computer Vision with OpenCV & PyTorch',
+                date: 'January 8-10, 2026',
+                time: '10:00 AM - 4:00 PM',
+                location: 'Boston, MA',
+                description: 'Hands-on workshop on image processing, object detection, and semantic segmentation projects.',
+                topics: ['Computer Vision', 'OpenCV', 'PyTorch', 'Object Detection'],
+                speaker: 'Alex Rodriguez, Computer Vision Specialist',
+                link: '#register',
+                capacity: '30/30 (Full)',
+                isFull: true
+            },
+            {
+                id: 5,
+                type: 'conference',
+                title: 'AI Summit 2026: The Future of Artificial Intelligence',
+                date: 'February 10-12, 2026',
+                time: '9:00 AM - 6:00 PM',
+                location: 'Virtual & In-Person (San Jose)',
+                description: '3-day international conference featuring keynotes, panel discussions, and technical sessions from industry leaders.',
+                topics: ['AI Strategy', 'Ethics', 'Generative AI', 'Enterprise AI'],
+                speaker: 'Multiple speakers including Yann LeCun, Fei-Fei Li, and more',
+                link: '#register',
+                capacity: '5000+ spots available',
+                isFull: false
+            },
+            {
+                id: 6,
+                type: 'webinar',
+                title: 'Responsible AI: Ethics and Bias Mitigation',
+                date: 'January 22, 2026',
+                time: '1:00 PM - 2:30 PM UTC',
+                location: 'Online',
+                description: 'Learn about ethical considerations in AI, detecting bias, and implementing responsible AI practices.',
+                topics: ['Ethics', 'Bias Detection', 'Fairness', 'Responsible AI'],
+                speaker: 'Dr. Kate Johnson, AI Ethics Researcher',
+                link: '#register',
+                capacity: '300+ spots available',
+                isFull: false
+            },
+            {
+                id: 7,
+                type: 'workshop',
+                title: 'NLP & Text Analysis Intensive',
+                date: 'January 29 - February 2, 2026',
+                time: '11:00 AM - 3:00 PM',
+                location: 'Virtual',
+                description: 'Master natural language processing with transformers, sentiment analysis, and text generation models.',
+                topics: ['NLP', 'Transformers', 'BERT', 'Text Generation'],
+                speaker: 'Emma Williams, NLP Engineer at AI Labs',
+                link: '#register',
+                capacity: '75/100',
+                isFull: false
+            },
+            {
+                id: 8,
+                type: 'meetup',
+                title: 'London AI & Data Science Community',
+                date: 'January 30, 2026',
+                time: '6:30 PM - 8:30 PM',
+                location: 'London, UK',
+                description: 'Join local AI professionals for talks, discussions on latest research, and networking over refreshments.',
+                topics: ['Networking', 'Research Updates', 'Career Development'],
+                speaker: 'Community Organized',
+                link: '#register',
+                capacity: '80+ spots available',
+                isFull: false
+            },
+            {
+                id: 9,
+                type: 'webinar',
+                title: 'Reinforcement Learning: Building Intelligent Agents',
+                date: 'February 5, 2026',
+                time: '3:00 PM - 4:30 PM UTC',
+                location: 'Online',
+                description: 'Introduction to reinforcement learning, Q-learning, policy gradients, and practical applications.',
+                topics: ['Reinforcement Learning', 'Q-Learning', 'Policy Gradients'],
+                speaker: 'Dr. Marcus Brown, RL Researcher at OpenAI',
+                link: '#register',
+                capacity: '400+ spots available',
+                isFull: false
+            },
+            {
+                id: 10,
+                type: 'workshop',
+                title: 'Production ML: Deployment & Monitoring',
+                date: 'February 19-21, 2026',
+                time: '9:00 AM - 5:00 PM',
+                location: 'Seattle, WA',
+                description: 'Learn how to deploy ML models in production, implement monitoring, and manage model lifecycle.',
+                topics: ['MLOps', 'Model Deployment', 'Monitoring', 'Docker', 'Kubernetes'],
+                speaker: 'Tom Zhang, Senior MLOps Engineer',
+                link: '#register',
+                capacity: '40/40 (Full)',
+                isFull: true
+            }
+        ];
+
+        function renderEvents(eventsToShow) {
+            const container = document.getElementById('eventsContainer');
+
+            if (eventsToShow.length === 0) {
+                container.innerHTML = '<div class="no-events">No events found. Check back soon!</div>';
+                return;
+            }
+
+            container.innerHTML = eventsToShow.map(event => `
+                <div class="event-card ${event.type}">
+                    <span class="event-type">${event.type}</span>
+                    <h3 class="event-title">${event.title}</h3>
+                    <div class="event-date">📅 ${event.date}</div>
+                    <div class="event-time">⏰ ${event.time}</div>
+                    <div class="event-location">📍 ${event.location}</div>
+                    <p class="event-description">${event.description}</p>
+                    <div class="event-topics">
+                        ${event.topics.map(topic => `<span class="topic-tag">${topic}</span>`).join('')}
+                    </div>
+                    <div class="event-speaker">👤 ${event.speaker}</div>
+                    <button class="event-button" onclick="registerEvent(${event.id})">Register Now</button>
+                    <div class="capacity ${event.isFull ? 'full' : ''}">
+                        ${event.isFull ? '❌' : '✅'} ${event.capacity}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterEvents(type) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Filter and display events
+            const filtered = type === 'all' ? events : events.filter(e => e.type === type);
+            renderEvents(filtered);
+        }
+
+        function registerEvent(eventId) {
+            const event = events.find(e => e.id === eventId);
+            alert(`Thank you for your interest! You will be redirected to register for:\n\n"${event.title}"\n\nRegistration portal coming soon.`);
+        }
+
+        // Initialize page with all events
+        renderEvents(events);
+    </script>
+</body>
+</html>
