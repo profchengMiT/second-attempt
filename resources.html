@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Upskilling Resources - Learning Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background: #f8f9fa;
+            padding: 20px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .content {
+            padding: 40px 20px;
+        }
+        
+        section {
+            margin-bottom: 50px;
+            display: none;
+        }
+        
+        section.active {
+            display: block;
+        }
+        
+        section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .resource-card {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 25px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            border-left-color: #764ba2;
+        }
+        
+        .resource-card h3 {
+            color: #667eea;
+            margin-bottom: 12px;
+            font-size: 1.3em;
+        }
+        
+        .resource-card p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+        
+        .resource-card .tags {
+            margin-bottom: 15px;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-right: 8px;
+            margin-bottom: 5px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+        
+        .btn:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .difficulty.beginner {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .difficulty.intermediate {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .difficulty.advanced {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .feature-item h4 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .feature-item p {
+            font-size: 0.95em;
+        }
+        
+        .highlight-box {
+            background: #e7f3ff;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .highlight-box h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background: #f8f9fa;
+            color: #666;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            nav {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            nav a {
+                text-align: center;
+            }
+            
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 AI Upskilling Resources</h1>
+            <p>Your comprehensive guide to mastering Artificial Intelligence and Machine Learning</p>
+        </header>
+        
+        <nav>
+            <a href="#" onclick="showSection('online-courses')">Online Courses</a>
+            <a href="#" onclick="showSection('tutorials')">Tutorials</a>
+            <a href="#" onclick="showSection('documentation')">Documentation</a>
+            <a href="#" onclick="showSection('tools')">Tools & Frameworks</a>
+            <a href="#" onclick="showSection('communities')">Communities</a>
+            <a href="#" onclick="showSection('datasets')">Datasets</a>
+        </nav>
+        
+        <div class="content">
+            <!-- Online Courses Section -->
+            <section id="online-courses" class="active">
+                <h2>📚 Online Courses</h2>
+                
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h3>Andrew Ng's Machine Learning Specialization</h3>
+                        <span class="difficulty beginner">Beginner</span>
+                        <p>Comprehensive introduction to machine learning fundamentals, supervised learning, unsupervised learning, and best practices.</p>
+                        <div class="tags">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <a href="https://www.coursera.org/learn/machine-learning" class="btn">Explore Course</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Deep Learning Specialization</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <p>Master neural networks, CNNs, RNNs, and sequence models. Led by Andrew Ng on Coursera.</p>
+                        <div class="tags">
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">Neural Networks</span>
+                            <span class="tag">TensorFlow</span>
+                        </div>
+                        <a href="https://www.coursera.org/specializations/deep-learning" class="btn">Explore Course</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Fast.ai - Practical Deep Learning</h3>
+                        <span class="difficulty beginner">Beginner</span>
+                        <p>Top-down approach to deep learning using PyTorch. Perfect for hands-on learners.</p>
+                        <div class="tags">
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">Computer Vision</span>
+                        </div>
+                        <a href="https://www.fast.ai/" class="btn">Explore Course</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Stanford CS224N: NLP with Deep Learning</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                        <p>In-depth exploration of NLP techniques, transformers, and state-of-the-art models.</p>
+                        <div class="tags">
+                            <span class="tag">NLP</span>
+                            <span class="tag">Transformers</span>
+                            <span class="tag">Advanced</span>
+                        </div>
+                        <a href="https://web.stanford.edu/class/cs224n/" class="btn">Explore Course</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Google Cloud AI & Machine Learning Fundamentals</h3>
+                        <span class="difficulty beginner">Beginner</span>
+                        <p>Learn AI/ML concepts and Google Cloud tools for building intelligent applications.</p>
+                        <div class="tags">
+                            <span class="tag">Cloud AI</span>
+                            <span class="tag">Google Cloud</span>
+                            <span class="tag">MLOps</span>
+                        </div>
+                        <a href="https://cloud.google.com/training" class="btn">Explore Course</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Hugging Face Course on NLP</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <p>Learn transformer models and NLP with Hugging Face. Includes code, audio, and video lessons.</p>
+                        <div class="tags">
+                            <span class="tag">NLP</span>
+                            <span class="tag">Transformers</span>
+                            <span class="tag">Hugging Face</span>
+                        </div>
+                        <a href="https://huggingface.co/course" class="btn">Explore Course</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Tutorials Section -->
+            <section id="tutorials">
+                <h2>🎓 Tutorials & Learning Materials</h2>
+                
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h3>Kaggle Learn Micro-Courses</h3>
+                        <span class="difficulty beginner">Beginner</span>
+                        <p>Free short courses on Python, ML, data science, and deep learning with hands-on notebooks.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Hands-on</span>
+                            <span class="tag">Free</span>
+                        </div>
+                        <a href="https://www.kaggle.com/learn" class="btn">Learn More</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>DeepLearning.AI Short Courses</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <p>Short, practical courses on LLMs, prompt engineering, vector databases, and more.</p>
+                        <div class="tags">
+                            <span class="tag">LLMs</span>
+                            <span class="tag">Practical</span>
+                            <span class="tag">AI</span>
+                        </div>
+                        <a href="https://www.deeplearning.ai/" class="btn">Learn More</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>3Blue1Brown - Neural Networks Playlist</h3>
+                        <span class="difficulty beginner">Beginner</span>
+                        <p>Visual and intuitive explanations of neural networks and deep learning fundamentals.</p>
+                        <div class="tags">
+                            <span class="tag">Video</span>
+                            <span class="tag">Visual Learning</span>
+                            <span class="tag">Neural Networks</span>
+                        </div>
+                        <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" class="btn">Watch Videos</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>PyTorch Official Tutorials</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <p>Comprehensive tutorials for learning PyTorch from basics to advanced techniques.</p>
+                        <div class="tags">
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">Official Docs</span>
+                        </div>
+                        <a href="https://pytorch.org/tutorials/" class="btn">Learn More</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Towards Data Science - Medium Publication</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <p>High-quality articles on ML, AI, data science, and industry best practices.</p>
+                        <div class="tags">
+                            <span class="tag">Articles</span>
+                            <span class="tag">Best Practices</span>
+                            <span class="tag">Industry</span>
+                        </div>
+                        <a href="https://towardsdatascience.com/" class="btn">Read Articles</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Papers with Code</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                        <p>Latest research papers with working code implementations and comparisons.</p>
+                        <div class="tags">
+                            <span class="tag">Research</span>
+                            <span class="tag">Code</span>
+                            <span class="tag">Papers</span>
+                        </div>
+                        <a href="https://paperswithcode.com/" class="btn">Explore Papers</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Documentation Section -->
+            <section id="documentation">
+                <h2>📖 Documentation & References</h2>
+                
+                <div class="highlight-box">
+                    <h4>✨ Essential Libraries Documentation</h4>
+                    <p>Comprehensive references for the most important AI/ML libraries and frameworks.</p>
+                </div>
+                
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h3>TensorFlow Official Documentation</h3>
+                        <p>Complete guides for TensorFlow 2.x, from basics to production deployment.</p>
+                        <div class="tags">
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">Official</span>
+                        </div>
+                        <a href="https://www.tensorflow.org/" class="btn">Read Docs</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>PyTorch Documentation</h3>
+                        <p>Official PyTorch documentation with API references and tutorials.</p>
+                        <div class="tags">
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">API</span>
+                            <span class="tag">Official</span>
+                        </div>
+                        <a href="https://pytorch.org/docs/" class="btn">Read Docs</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Scikit-Learn Documentation</h3>
+                        <p>Comprehensive guide to machine learning algorithms and preprocessing tools.</p>
+                        <div class="tags">
+                            <span class="tag">Scikit-Learn</span>
+                            <span class="tag">ML</span>
+                            <span class="tag">Official</span>
+                        </div>
+                        <a href="https://scikit-learn.org/" class="btn">Read Docs</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Keras API Documentation</h3>
+                        <p>User-friendly API documentation for building neural networks with Keras.</p>
+                        <div class="tags">
+                            <span class="tag">Keras</span>
+                            <span class="tag">Neural Networks</span>
+                            <span class="tag">API</span>
+                        </div>
+                        <a href="https://keras.io/" class="btn">Read Docs</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Hugging Face Transformers</h3>
+                        <p>Documentation for the Transformers library and pre-trained models.</p>
+                        <div class="tags">
+                            <span class="tag">Transformers</span>
+                            <span class="tag">NLP</span>
+                            <span class="tag">Hugging Face</span>
+                        </div>
+                        <a href="https://huggingface.co/docs/transformers/" class="btn">Read Docs</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>OpenAI API Documentation</h3>
+                        <p>API documentation for GPT models and other OpenAI services.</p>
+                        <div class="tags">
+                            <span class="tag">GPT</span>
+                            <span class="tag">LLMs</span>
+                            <span class="tag">API</span>
+                        </div>
+                        <a href="https://platform.openai.com/docs/" class="btn">Read Docs</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Tools & Frameworks Section -->
+            <section id="tools">
+                <h2>🛠️ Tools & Frameworks</h2>
+                
+                <div class="features">
+                    <div class="feature-item">
+                        <h4>🔬 Deep Learning</h4>
+                        <p>TensorFlow, PyTorch, Keras for building neural networks</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>📊 Data Processing</h4>
+                        <p>Pandas, NumPy, Dask for data manipulation</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🤖 NLP</h4>
+                        <p>Hugging Face, NLTK, spaCy for language processing</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>👁️ Computer Vision</h4>
+                        <p>OpenCV, Pillow, Torchvision for image processing</p>
+                    </div>
+                </div>
+                
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h3>Jupyter Notebook</h3>
+                        <p>Interactive computing environment for data science and machine learning.</p>
+                        <div class="tags">
+                            <span class="tag">Notebook</span>
+                            <span class="tag">Development</span>
+                        </div>
+                        <a href="https://jupyter.org/" class="btn">Learn More</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Google Colab</h3>
+                        <p>Free cloud-based Jupyter notebook with GPU access.</p>
+                        <div class="tags">
+                            <span class="tag">Cloud</span>
+                            <span class="tag">Free GPU</span>
+                        </div>
+                        <a href="https://colab.research.google.com/" class="btn">Try Now</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>VS Code + Python Extension</h3>
+                        <p>Lightweight and powerful code editor for Python development.</p>
+                        <div class="tags">
+                            <span class="tag">IDE</span>
+                            <span class="tag">Code Editor</span>
+                        </div>
+                        <a href="https://code.visualstudio.com/" class="btn">Download</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Anaconda Distribution</h3>
+                        <p>Python distribution with pre-installed data science and ML packages.</p>
+                        <div class="tags">
+                            <span class="tag">Package Manager</span>
+                            <span class="tag">Environment</span>
+                        </div>
+                        <a href="https://www.anaconda.com/" class="btn">Download</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Git & GitHub</h3>
+                        <p>Version control for collaborative development and code sharing.</p>
+                        <div class="tags">
+                            <span class="tag">Version Control</span>
+                            <span class="tag">Collaboration</span>
+                        </div>
+                        <a href="https://github.com/" class="btn">Learn More</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Docker</h3>
+                        <p>Containerization for reproducible ML environments.</p>
+                        <div class="tags">
+                            <span class="tag">DevOps</span>
+                            <span class="tag">Deployment</span>
+                        </div>
+                        <a href="https://www.docker.com/" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Communities Section -->
+            <section id="communities">
+                <h2>👥 Communities & Forums</h2>
+                
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h3>Stack Overflow - AI/ML Tags</h3>
+                        <p>Q&A community for technical questions on machine learning and AI.</p>
+                        <div class="tags">
+                            <span class="tag">Q&A</span>
+                            <span class="tag">Community</span>
+                        </div>
+                        <a href="https://stackoverflow.com/questions/tagged/machine-learning" class="btn">Visit</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Kaggle Community</h3>
+                        <p>Participate in competitions, share datasets, and learn from others.</p>
+                        <div class="tags">
+                            <span class="tag">Competitions</span>
+                            <span class="tag">Datasets</span>
+                        </div>
+                        <a href="https://www.kaggle.com/" class="btn">Join</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>r/MachineLearning on Reddit</h3>
+                        <p>Active subreddit for discussing ML research, papers, and projects.</p>
+                        <div class="tags">
+                            <span class="tag">Discussion</span>
+                            <span class="tag">Research</span>
+                        </div>
+                        <a href="https://www.reddit.com/r/MachineLearning/" class="btn">Visit</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>ArXiv.org</h3>
+                        <p>Access to latest preprints and research papers in AI and ML.</p>
+                        <div class="tags">
+                            <span class="tag">Research</span>
+                            <span class="tag">Papers</span>
+                        </div>
+                        <a href="https://arxiv.org/" class="btn">Browse Papers</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Medium - AI/ML Community</h3>
+                        <p>Read and share articles about machine learning and artificial intelligence.</p>
+                        <div class="tags">
+                            <span class="tag">Articles</span>
+                            <span class="tag">Stories</span>
+                        </div>
+                        <a href="https://medium.com/tag/machine-learning" class="btn">Read Articles</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Discord AI Communities</h3>
+                        <p>Join active Discord servers focused on AI, ML, and data science.</p>
+                        <div class="tags">
+                            <span class="tag">Chat</span>
+                            <span class="tag">Real-time</span>
+                        </div>
+                        <a href="https://discord.com/" class="btn">Find Servers</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Datasets Section -->
+            <section id="datasets">
+                <h2>📊 Datasets & Benchmarks</h2>
+                
+                <div class="highlight-box">
+                    <h4>💡 Popular Datasets for Learning</h4>
+                    <p>High-quality datasets to practice your machine learning skills.</p>
+                </div>
+                
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h3>Kaggle Datasets</h3>
+                        <p>Thousands of datasets ranging from beginner to advanced difficulty levels.</p>
+                        <div class="tags">
+                            <span class="tag">Datasets</span>
+                            <span class="tag">Diverse</span>
+                            <span class="tag">Free</span>
+                        </div>
+                        <a href="https://www.kaggle.com/datasets" class="btn">Explore</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>UCI Machine Learning Repository</h3>
+                        <p>Classic datasets for machine learning research and education.</p>
+                        <div class="tags">
+                            <span class="tag">Classic</span>
+                            <span class="tag">Benchmark</span>
+                        </div>
+                        <a href="https://archive.ics.uci.edu/ml/" class="btn">Browse</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>ImageNet</h3>
+                        <p>Large-scale visual database for computer vision research.</p>
+                        <div class="tags">
+                            <span class="tag">Images</span>
+                            <span class="tag">Vision</span>
+                        </div>
+                        <a href="http://www.image-net.org/" class="btn">Access</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>MNIST & Fashion-MNIST</h3>
+                        <p>Classic digit and clothing image datasets for beginners.</p>
+                        <div class="tags">
+                            <span class="tag">Images</span>
+                            <span class="tag">Beginner</span>
+                            <span class="tag">Benchmark</span>
+                        </div>
+                        <a href="https://yann.lecun.com/exdb/mnist/" class="btn">Download</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Google Dataset Search</h3>
+                        <p>Search engine for finding datasets across the web.</p>
+                        <div class="tags">
+                            <span class="tag">Search</span>
+                            <span class="tag">Discovery</span>
+                        </div>
+                        <a href="https://datasetsearch.research.google.com/" class="btn">Search</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Hugging Face Datasets</h3>
+                        <p>Datasets for NLP, computer vision, and audio tasks.</p>
+                        <div class="tags">
+                            <span class="tag">Hugging Face</span>
+                            <span class="tag">NLP</span>
+                            <span class="tag">Multimodal</span>
+                        </div>
+                        <a href="https://huggingface.co/datasets" class="btn">Browse</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 AI Upskilling Resources Hub. Last updated: December 16, 2025</p>
+            <p>Curated resources for anyone looking to master AI and machine learning</p>
+        </footer>
+    </div>
+    
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+            
+            // Smooth scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Prevent default link behavior and handle navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+            });
+        });
+    </script>
+</body>
+</html>
