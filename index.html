@@ -1,101 +1,412 @@
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px}
-    span.s1 {font-kerning: none}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Modern Homepage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #007bff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8rem 2rem;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #fff;
+            color: #667eea;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            background: #f9f9f9;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #667eea;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Community Section */
+        .community {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .community h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateX(5px);
+        }
+
+        .testimonial p {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .stars {
+            color: #ffc107;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #555;
+            padding-top: 2rem;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .features h2,
+            .community h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;meta charset="UTF-8" /&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;title&gt;Upskilling AI Skills&lt;/title&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  &lt;!-- Fonts --&gt;</span></p>
-<p class="p1"><span class="s1">  https://fonts.gstatic.com</span></p>
-<p class="p1"><span class="s1">  https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  &lt;style&gt;</span></p>
-<p class="p1"><span class="s1">    :root {</span></p>
-<p class="p1"><span class="s1">      --bg: #f7f8fa;</span></p>
-<p class="p1"><span class="s1">      --surface: #ffffff;</span></p>
-<p class="p1"><span class="s1">      --text: #0f172a;       /* Slate-900 */</span></p>
-<p class="p1"><span class="s1">      --muted: #475569;      /* Slate-600 */</span></p>
-<p class="p1"><span class="s1">      --primary: #2563eb;    /* Blue-600 */</span></p>
-<p class="p1"><span class="s1">      --primary-contrast: #ffffff;</span></p>
-<p class="p1"><span class="s1">      --ring: rgba(37, 99, 235, 0.35);</span></p>
-<p class="p1"><span class="s1">      --card-border: #e2e8f0; /* Slate-200 */</span></p>
-<p class="p1"><span class="s1">      --shadow: 0 10px 30px rgba(2, 6, 23, 0.08);</span></p>
-<p class="p1"><span class="s1">      --radius-lg: 14px;</span></p>
-<p class="p1"><span class="s1">      --radius-md: 12px;</span></p>
-<p class="p1"><span class="s1">      --radius-sm: 10px;</span></p>
-<p class="p1"><span class="s1">      --container: 1120px;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    /* Dark mode variables */</span></p>
-<p class="p1"><span class="s1">    [data-theme="dark"] {</span></p>
-<p class="p1"><span class="s1">      --bg: #0b1020;</span></p>
-<p class="p1"><span class="s1">      --surface: #11182c;</span></p>
-<p class="p1"><span class="s1">      --text: #e5e7eb;</span></p>
-<p class="p1"><span class="s1">      --muted: #cbd5e1;</span></p>
-<p class="p1"><span class="s1">      --primary: #60a5fa;</span></p>
-<p class="p1"><span class="s1">      --primary-contrast: #0b1020;</span></p>
-<p class="p1"><span class="s1">      --ring: rgba(96, 165, 250, 0.35);</span></p>
-<p class="p1"><span class="s1">      --card-border: #1f2937;</span></p>
-<p class="p1"><span class="s1">      --shadow: 0 10px 30px rgba(0,0,0,0.35);</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    /* Base */</span></p>
-<p class="p1"><span class="s1">    * { box-sizing: border-box; }</span></p>
-<p class="p1"><span class="s1">    html, body {</span></p>
-<p class="p1"><span class="s1">      height: 100%;</span></p>
-<p class="p1"><span class="s1">      background: var(--bg);</span></p>
-<p class="p1"><span class="s1">      color: var(--text);</span></p>
-<p class="p1"><span class="s1">      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;</span></p>
-<p class="p1"><span class="s1">      line-height: 1.6;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    a { color: inherit; text-decoration: none; }</span></p>
-<p class="p1"><span class="s1">    .container {</span></p>
-<p class="p1"><span class="s1">      max-width: var(--container);</span></p>
-<p class="p1"><span class="s1">      margin: 0 auto;</span></p>
-<p class="p1"><span class="s1">      padding: 0 24px;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    /* Header */</span></p>
-<p class="p1"><span class="s1">    header {</span></p>
-<p class="p1"><span class="s1">      position: sticky;</span></p>
-<p class="p1"><span class="s1">      top: 0;</span></p>
-<p class="p1"><span class="s1">      backdrop-filter: saturate(180%) blur(8px);</span></p>
-<p class="p1"><span class="s1">      background: color-mix(in oklab, var(--bg) 92%, transparent);</span></p>
-<p class="p1"><span class="s1">      border-bottom: 1px solid var(--card-border);</span></p>
-<p class="p1"><span class="s1">      z-index: 50;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .nav {</span></p>
-<p class="p1"><span class="s1">      display: flex;</span></p>
-<p class="p1"><span class="s1">      align-items: center;</span></p>
-<p class="p1"><span class="s1">      justify-content: space-between;</span></p>
-<p class="p1"><span class="s1">      padding: 18px 0;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .brand {</span></p>
-<p class="p1"><span class="s1">      display: flex;</span></p>
-<p class="p1"><span class="s1">      align-items: center;</span></p>
-<p class="p1"><span class="s1">      gap: 12px;</span></p>
-<p class="p1"><span class="s1">      font-weight: 700;</span></p>
-<p class="p1"><span class="s1">      letter-spacing: 0.2px;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .brand-logo {</span></p>
-<p class="p1"><span class="s1">      width: 36px; height: 36px;</span></p>
-<p class="p1"><span class="s1">      border-radius: 10px;</span></p>
-<p class="p1"><span class="s1">      display: grid; place-items: center;</span></p>
-<p class="p1"><span class="s1">      background: radial-gradient(120% 120% at 20% 20%, #93c5fd 0%, #3b82f6 45%, #1e40af 100%);</span></p>
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#community">Community</a></li>
+            <li><a href="#footer">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div>
+            <h1>Welcome to Excellence</h1>
+            <p>Discover amazing features and join our growing community</p>
+            <button class="cta-button">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>Our Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Lightning Fast</h3>
+                <p>Experience blazing-fast performance with our optimized infrastructure and cutting-edge technology stack.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure & Safe</h3>
+                <p>Your data is protected with enterprise-grade security, encryption, and regular security audits.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Mobile Friendly</h3>
+                <p>Seamlessly works on all devices with responsive design and native mobile app experience.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Beautiful Design</h3>
+                <p>Stunning user interface with modern aesthetics and intuitive navigation for all users.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <h3>Easy Integration</h3>
+                <p>Simple APIs and comprehensive documentation for seamless integration with your existing systems.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Analytics & Insights</h3>
+                <p>Powerful analytics dashboard with real-time insights to track performance and optimize results.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Highlights Section -->
+    <section class="community" id="community">
+        <h2>Community Highlights</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p>"This platform has transformed the way we work. Highly recommended for anyone looking to scale their business!"</p>
+                <div class="testimonial-author">- Sarah Johnson, CEO</div>
+            </div>
+
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p>"Exceptional service and support. The team goes above and beyond to ensure customer satisfaction every time."</p>
+                <div class="testimonial-author">- Michael Chen, Founder</div>
+            </div>
+
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p>"Best investment we made this year. The ROI has been incredible and the integration was seamless."</p>
+                <div class="testimonial-author">- Emily Rodriguez, Manager</div>
+            </div>
+
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p>"Outstanding features and performance. We've seen significant improvements in productivity since day one."</p>
+                <div class="testimonial-author">- David Park, Director</div>
+            </div>
+
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p>"The support team is incredibly responsive and helpful. Any issues are resolved quickly and professionally."</p>
+                <div class="testimonial-author">- Jessica Lee, Specialist</div>
+            </div>
+
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p>"A game-changer for our industry. The innovation and commitment to excellence is unmatched."</p>
+                <div class="testimonial-author">- Robert Martinez, Consultant</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#updates">Updates</a></li>
+                    <li><a href="#roadmap">Roadmap</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#press">Press</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#docs">Documentation</a></li>
+                    <li><a href="#help">Help Center</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                    <li><a href="#cookies">Cookie Policy</a></li>
+                    <li><a href="#disclaimer">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Modern Homepage. All rights reserved. | Built with ❤️</p>
+        </div>
+    </footer>
 </body>
 </html>
