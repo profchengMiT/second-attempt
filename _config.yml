@@ -1,0 +1,30 @@
+# GitHub Pages Configuration
+# This file configures Jekyll for GitHub Pages
+
+# Site settings
+title: Second Attempt
+description: A GitHub Pages website
+baseurl: ""
+url: "https://profchengmit.github.io/second-attempt"
+
+# Theme
+theme: jekyll-theme-minimal
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude files from the build
+exclude:
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .git
+  - .github
